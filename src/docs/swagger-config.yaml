@@ -4,7 +4,7 @@ info:
   description: SDET MASTERY SANDBOX
   version: 1.0.0
 servers:
-  - url: 'https://localhost:3000'
+  - url: 'http://localhost:3000'
 paths:
   /pets:
     get:
@@ -31,7 +31,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#src/schemas/Pets"
+                $ref: "#components/schemas/Pets"
         default:
           description: unexpected error
           content:
@@ -53,3 +53,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
+components:
+    schemas:
+      Pets:
+        type: object
+      Error:
+        type: object

@@ -1,10 +1,12 @@
-import {Router} from 'express';
-import {getPets} from '../controllers/pets.js';
+import { Router } from 'express';
+import { getPets } from '../controllers/pets';
 
-const router = Router()
+const router = Router();
 
+router.get('/', getPets);
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  res.status(200).send(`${id}`);
+});
 
-router.get('/pets', getPets)
-
-
-export default router
+export default router;
