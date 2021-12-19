@@ -1,0 +1,26 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "simple api for 'sdet' mastery purposes",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "serve": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Miki",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.15"
+  }
+}
