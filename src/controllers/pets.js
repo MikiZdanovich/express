@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')
 
-const db = pgp('postgres://user:pass@postgres:5432/db')
+const db = pgp('postgres://postgres:postgres@localhost:35432/db')
 
 // eslint-disable-next-line import/prefer-default-export
 export const getPets = (req, res) => {
