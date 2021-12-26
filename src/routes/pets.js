@@ -3,10 +3,6 @@ import { getPets } from '../controllers/pets';
 
 const router = Router();
 
-router.get('/', getPets);
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  res.status(200).send(`${id}`);
-});
+router.get('/:tags', getPets);
 
 export default router;
