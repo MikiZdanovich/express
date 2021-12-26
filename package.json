@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
-    "pg-promise": "^10.11.1",
+    "pg": "^8.7.1",
+    "sequelize": "^7.0.0-alpha.2",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0",
     "yamljs": "^0.3.0"
