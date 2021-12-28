@@ -1,8 +1,5 @@
 import * as Sequelize from 'sequelize'
-// eslint-disable-next-line import/no-unresolved
-import Category from 'categoryMode.js'
-// eslint-disable-next-line import/no-unresolved
-import Tags from 'tagModel.js'
+
 import db from '../utils/database'
 
 const Pet = db.define('pet', {
@@ -13,7 +10,7 @@ const Pet = db.define('pet', {
     primaryKey: true,
   },
   category: {
-    type: Category, // CHECK HOW TO PASS OBJECT
+    type: Sequelize.JSONB,
     unique: false,
     allowNull: false,
   },
@@ -24,10 +21,10 @@ const Pet = db.define('pet', {
     required: true,
   },
   photoUrls: {
-    type: Sequelize.JSON, // same check how to pass orderedMap
+    type: Sequelize.JSONB,
   },
   tags: {
-    type: Tags,
+    type: Sequelize.JSONB,
   },
   status: {
     type: Sequelize.ENUM,
@@ -35,3 +32,5 @@ const Pet = db.define('pet', {
   },
 
 })
+
+export default Pet
