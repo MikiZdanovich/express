@@ -148,7 +148,7 @@ components:
         name:
           type: string
       xml:
-        name: Category
+        name: CategoryModel
     User:
       type: object
       properties:

@@ -7,17 +7,19 @@ services:
       - postgres
     environment:
       - EXTERNAL_PORT=8080
-      - PGUSER=test
-      - PGPASSWORD=test
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
       - PGDATABASE=db
-      - PGHOST=postgres # NAME OF THE SERVICE
-      - PORT: 3000
+      - PGHOST=postgres.host
+      - PORT=3000
+      - PGPORT=5432
     ports:
       - "3000:3000"
+    links:
+     - postgres:postgres.host
     command: npm run serve
     volumes:
-      - .:/app/
-      - /app/node_modules
+      - .:/app
 
   postgres:
     container_name: postgres
@@ -29,7 +31,5 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: db
     volumes:
-      - pgdata1:/var/lib/postgresql/data
+      - ./data:/var/lib/postgresql/data
 
-volumes:
-  pgdata1:{}

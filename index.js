@@ -4,6 +4,7 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import yaml from 'yamljs';
 
 import Routes from './src/routes';
+import database from './src/db';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -28,6 +29,8 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/sandbox', swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerDocs));
 
 app.use(Routes);
+
+database.connect()
 
 app.listen(PORT, () => {
   console.log(`Server has been started on ${PORT}...`)
