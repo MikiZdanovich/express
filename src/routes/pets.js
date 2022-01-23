@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { getPets } from '../controllers/pets';
+import { getPetsByTags, addPet } from '../controllers/pets';
 
 const router = Router();
 
-router.get('/:tags', getPets);
+router.get('/:tags', getPetsByTags);
 
-export default router;
+router.post('/', addPet)
+
+export default router

@@ -2,8 +2,9 @@ import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import yaml from 'yamljs';
+import bodyParser from 'body-parser';
 
-import Routes from './src/routes';
+import petRoutes from './src/routes/pets';
 import database from './src/db';
 
 const PORT = process.env.PORT || 3000;
@@ -26,12 +27,16 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use('/sandbox', swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerDocs));
 
-app.use(Routes);
+app.use('/pet', petRoutes)
 
 database.connect()
 
 app.listen(PORT, () => {
-  console.log(`Server has been started on ${PORT}...`)
+  console.log(`Server has been started on port:${PORT}...`)
 });

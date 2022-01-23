@@ -1,11 +1,29 @@
-// eslint-disable-next-line import/prefer-default-export
-export const getPets = (req, res) => {
-  const tags = req.params
-  // eslint-disable-next-line no-template-curly-in-string
-  // db.one('SELECT * FROM pets WHERE tags in $tags', [tags], (error, results) => {
-  //   if (error) {
-  //     throw error
-  //   }
-  res.status(200).json({})
-  // })
+import { Pet } from '../db'
+
+export const getPetsByTags = async (req, res) => {
+  const tagsToSearch = req.params
+  const petsByTags = await Pet.findOne({
+    where: {
+      tags: tagsToSearch,
+    },
+  }).toJSON
+  if (petsByTags != null) {
+    res.status(200).json({ petsByTags })
+  } else {
+    res.status(404)
+  }
 };
+
+export const addPet = async (req, res) => {
+  const reqBody = req.body
+  if (reqBody != null) {
+    const newPet = await Pet.create({
+      name: reqBody.name,
+      photoUrls: reqBody.photoUrls,
+
+    })
+    res.status(201)
+    console.log(newPet)
+  }
+  res.status(201).send(req.body)
+}

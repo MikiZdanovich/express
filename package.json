@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon --exec babel-node index.js",
-    "start": "babel-node index.js"
+    "start": "babel-node index.js",
+    "db_init": "babel-node dbInit.js"
   },
   "keywords": [
     "express"
@@ -13,6 +14,7 @@
   "author": "Miki",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.1",
     "express": "^4.17.2",
     "pg": "^8.7.1",
     "sequelize": "^7.0.0-alpha.2",

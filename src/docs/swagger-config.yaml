@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.0.1
 info:
   title: Godel Petstore
   description: SDET MASTERY SANDBOX
@@ -58,6 +58,8 @@ paths:
                 $ref: '#/components/schemas/Pet'
           required: true
       responses:
+          201:
+            description: Operation Succeed
           405:
             description: Invalid input
             content: { }
