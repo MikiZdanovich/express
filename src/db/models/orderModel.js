@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+module.expoets = (sequelize, DataTypes) => {
   const Order = sequelize.define(
     'Order',
     {

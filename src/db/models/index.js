@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
-import { join } from 'path'
-import { readdirSync } from 'fs'
+import { path } from 'path'
+import { fs } from 'fs'
 
 const sequelize = new Sequelize(
   process.env.PGDATABASE,
@@ -15,13 +15,17 @@ const sequelize = new Sequelize(
 
 const db = {}
 
-readdirSync(__dirname)
-  .filter((file) => file !== 'index.js')
-  .forEach((file) => {
-    const model = sequelize.import(join(__dirname, file))
-
-    db[model.name] = model;
+fs
+  .readdirSync(__dirname)
+  .filter((file) => {
+    const returnFile = (file.indexOf('.') !== 0)
+      && (file !== 'index.js');
+    return returnFile;
   })
+  .forEach((file) => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize)
+    db[model.name] = model;
+  });
 
 Object.keys(db).forEach((modelName) => {
   if ('associate' in db[modelName]) {
