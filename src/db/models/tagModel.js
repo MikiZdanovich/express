@@ -1,17 +1,15 @@
-import * as Sequelize from 'sequelize'
-
-module.exports = (db) => {
-  const Tag = db.define(
+export default (sequelize, DataTypes) => {
+  const Tag = sequelize.define(
     'Tag',
     {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
       name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: false,
         required: true,
@@ -21,9 +19,9 @@ module.exports = (db) => {
       tableName: 'tags',
     },
   )
-  Tag.associate = (models) => {
-    Tag.hasMany(models.Pet, { foreignKey: 'tag', as: 'pets' })
-  }
+  // Tag.associate = (models) => {
+  //   Tag.hasMany(models.Pet, { foreignKey: 'tag', as: 'pets' })
+  // }
 
   return Tag
 }

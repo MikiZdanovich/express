@@ -1,28 +1,23 @@
-import * as Sequelize from 'sequelize'
-
-module.exports = (db) => {
-  const Category = db.define(
+export default (sequelize, DataTypes) => {
+  const Category = sequelize.define(
     'Category',
     {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
       name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: false,
         required: true,
       },
     },
-    {
-      tableName: 'category',
-    },
   )
-  Category.associate = (models) => {
-    Category.hasMany(models.Pet, { foreignKey: 'category', as: 'name' })
-  }
+  // Category.associate = (models) => {
+  //   Category.hasMany(models.Pet, { foreignKey: 'category', as: 'name' })
+  // }
   return Category
 }

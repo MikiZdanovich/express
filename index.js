@@ -5,7 +5,9 @@ import yaml from 'yamljs';
 import bodyParser from 'body-parser';
 
 import petRoutes from './src/routes/pets';
-import database from './src/db';
+import database from './src/db/models';
+
+
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -35,8 +37,19 @@ app.use('/sandbox', swaggerUI.serve, swaggerUI.setup(swaggerDocument, swaggerDoc
 
 app.use('/pet', petRoutes)
 
-database.connect()
+// database.connect()
+// database.db.sync().then(result => {
+//   console.log('Connection to DB succeed');
 
-app.listen(PORT, () => {
-  console.log(`Server has been started on port:${PORT}...`)
-});
+//   app.listen(PORT, () => {
+//     console.log(`Server has been started on port:${PORT}...`)
+//   });
+
+// }).catch(err => {
+//   console.log('Failed to connect to db');
+// });
+
+
+  app.listen(PORT, () => {
+    console.log(`Server has been started on port:${PORT}...`)
+  });

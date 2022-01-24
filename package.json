@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "nodemon --exec babel-node index.js",
     "start": "babel-node index.js",
-    "db_init": "babel-node dbInit.js"
+    "migrate": "nodemon --exec babel-node migrations.js"
   },
   "keywords": [
     "express"

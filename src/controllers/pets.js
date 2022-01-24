@@ -1,4 +1,4 @@
-import { Pet } from '../db'
+import { Pet } from '../db/models'
 
 export const getPetsByTags = async (req, res) => {
   const tagsToSearch = req.params

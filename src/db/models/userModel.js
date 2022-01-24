@@ -1,53 +1,51 @@
-import * as Sequelize from 'sequelize'
-
-module.exports = (db) => {
-  const User = db.define(
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define(
     'User',
     {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
       username: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         required: true,
       },
       firstName: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: false,
         required: true,
       },
       lastName: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: false,
         required: true,
       },
       email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: false,
         required: true,
       },
       password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: false,
         required: true,
       },
       phone: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
         unique: true,
         required: false,
       },
       userStatus: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
     },
     {

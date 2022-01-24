@@ -1,43 +1,38 @@
-import * as Sequelize from 'sequelize'
-
-module.exports = (db) => {
-  const Order = db.define(
+export default (sequelize, DataTypes) => {
+  const Order = sequelize.define(
     'Order',
     {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
       petId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: false,
         required: true,
         foreignKey: true,
       },
       quantity: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       shipDate: {
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
       status: {
-        type: Sequelize.ENUM,
+        type: DataTypes.ENUM,
         values: ['placed', 'approved', 'delivered'],
       },
       complete: {
-        type: Sequelize.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         default: false,
       },
     },
-    {
-      tableName: 'order',
-    },
   )
-  Order.associate = (models) => {
-    Order.belongsTo(models.Pet, { foreignKey: 'id', as: 'petID' })
-  }
+  // Order.associate = (models) => {
+  //   Order.belongsTo(models.Pet, { foreignKey: 'id', as: 'petID' })
+  // }
   return Order
 }
